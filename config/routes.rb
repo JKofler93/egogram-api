@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/users", to: "users#index"
 
   post "/follow", to: "users#follow"
+  post "/unfollow", to: "users#unfollow"
 
   post "/login", to: "auth#create"
 
