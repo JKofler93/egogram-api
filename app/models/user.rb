@@ -21,9 +21,9 @@ class User < ApplicationRecord
     has_many :followings, through: :given_follows, source: :followed_user
 
     def filter_home_posts
-        user_posts = self.posts.where("profile_user_id = ? AND user_id = ?", self.id, self.id)
+        user_posts = self.posts.where("user_id = ?", self.id)
     
-        friends_posts = self.followings.map {|user| user.posts.where("profile_user_id = ? AND user_id = ?", user.id, user.id)}
+        friends_posts = self.followings.map {|user| user.posts.where("user_id = ?", user.id)}
         combined = user_posts += friends_posts
         final = combined.flatten.map {|post| PostSerializer.new(post)}
     end

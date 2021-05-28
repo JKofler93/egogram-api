@@ -7,7 +7,6 @@ class Post < ApplicationRecord
     has_many :comments
     has_many :users, through: :comments
 
-
     def determine_time
         a = (Time.now-self.updated_at.to_i).to_i
         
