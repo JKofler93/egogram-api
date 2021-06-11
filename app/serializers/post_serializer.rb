@@ -1,6 +1,6 @@
 class PostSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :user_id, :avatar, :username, :image, :content, :time, :likes, :like_number, :created_at, :comments
+  attributes :id, :user_id, :avatar, :username, :image, :content, :time, :likes, :like_number, :comment_number, :created_at, :comments
   # , :profile_image
 
   def image
@@ -36,7 +36,9 @@ class PostSerializer < ActiveModel::Serializer
     object.determine_time
   end
 
-
+  def comment_number
+    comments.length
+  end
 
   def like_number
     likes.length
