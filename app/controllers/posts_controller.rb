@@ -39,6 +39,8 @@ class PostsController < ApplicationController
           post = Post.find(params[:id])
           post.destroy
         end
+        posts = Post.all
+        render json: posts
     end
 
 

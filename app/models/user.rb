@@ -3,9 +3,9 @@ class User < ApplicationRecord
     
     has_secure_password
 
-    has_many :posts
-    has_many :comments
-    has_many :likes, through: :posts
+    has_many :posts, :dependent => :delete_all
+    has_many :comments, :dependent => :delete_all
+    has_many :likes, through: :posts, :dependent => :delete_all
 
     validates :username, :email, :password_digest, presence: true
     validates :email, uniqueness: true

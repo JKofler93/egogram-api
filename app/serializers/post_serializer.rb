@@ -12,10 +12,6 @@ class PostSerializer < ActiveModel::Serializer
     url_for(object.post_image) 
   end 
 
-  # def post_image 
-  #   url_for(object.post_image) 
-  # end 
-
   def username
     object.user.username
   end 

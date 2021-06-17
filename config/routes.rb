@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     post "/like", to: "posts#like"
     delete "/unlike/:id", to: "posts#unlike"
   end   
-  
 
   post "/follow", to: "users#follow"
   post "/unfollow", to: "users#unfollow"
