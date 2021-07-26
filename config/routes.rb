@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get '/followings', to: 'users#followings'
     get '/home', to: 'users#home'
   end
+
   post "/register", to: "users#create"
   get "/users", to: "users#index"
   

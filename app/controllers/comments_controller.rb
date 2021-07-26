@@ -20,6 +20,10 @@ class CommentsController < ApplicationController
         render json: { error: 'Failed to update comment' }, status: :not_acceptable
       end
     end
+    # This is a cool new post! I hope you like it!!
+
+    # This is a comment
+    # This is an edited comment
 
     def destroy
       comment = Comment.find(params[:id])

@@ -6,7 +6,6 @@ class Post < ApplicationRecord
     has_many :users, through: :likes
     has_many :comments, :dependent => :delete_all
     has_many :users, through: :comments
-    # has_many :post_images, :dependent => :delete_all
 
     def determine_time
         a = (Time.now-self.updated_at.to_i).to_i

@@ -33,6 +33,28 @@ class UsersController < ApplicationController
             # , status: :not_acceptable
         end 
     end 
+
+    def update
+      # byebug
+        if current_user.id === params[:id].to_i
+          user = User.find(params[:id])
+          user.update(user_params)
+        end
+        if user.valid?
+          render json: { user: UserSerializer.new(user) }, status: :accepted
+        else
+          render json: { error: "Failed to update User"}, status: :not_acceptable
+        end
+    end
+
+    # profile_image: { 
+    #   url: hjfslhjsghhjlggs.com
+    #  }
+
+
+
+
+##################################################################################################################################################################################################################
     
     def profile2
         posts = Post.where(user_id: params[:user_id].to_i)
@@ -82,7 +104,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :bio, :email, :password, :profile_image)
+        params.require(:user).permit(:username, :bio, :email, :password, :profile_image)
     end 
 
     def follow_params

@@ -35,12 +35,12 @@ class PostsController < ApplicationController
     end
 
     def destroy
-        if current_user.id === post_params[:user_id]
-          post = Post.find(params[:id])
-          post.destroy
-        end
-        posts = Post.all
-        render json: posts
+      if current_user.id === post_params[:user_id]
+        post = Post.find(params[:id])
+        post.destroy
+      end
+      posts = Post.all
+      render json: posts
     end
 
 
