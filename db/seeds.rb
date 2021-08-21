@@ -9,7 +9,7 @@ User.destroy_all
 Post.destroy_all
 Comment.destroy_all
 Like.destroy_all
-Follow.destroy_all
+# Follow.destroy_all
 
 # u1 = User.create(
 #     username: "NOWAYJOEK",
