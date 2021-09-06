@@ -1,6 +1,4 @@
-class User < ApplicationRecord
-    has_one_attached :profile_image
-    
+class User < ApplicationRecord    
     has_secure_password
 
     has_many :posts, :dependent => :delete_all

@@ -1,16 +1,6 @@
 class PostSerializer < ActiveModel::Serializer
-  include Rails.application.routes.url_helpers
-  attributes :id, :user_id, :avatar, :username, :image, :content, :time, :likes, :like_number, :comment_number, :created_at, :comments
-  # , :profile_image
+  attributes :id, :user_id, :avatar, :username, :post_image, :content, :time, :likes, :like_number, :comment_number, :created_at, :comments
 
-  def image
-    if object.post_image.attached?
-      { 
-        url: rails_blob_url(object.post_image)
-      }
-    end
-    url_for(object.post_image) 
-  end 
 
   def username
     object.user.username

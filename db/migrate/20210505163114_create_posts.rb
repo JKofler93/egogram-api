@@ -3,6 +3,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
     create_table :posts do |t|
       t.belongs_to :user, null: false, foreign_key: true
       t.string :content 
+      t.string :post_image
 
       t.timestamps
     end

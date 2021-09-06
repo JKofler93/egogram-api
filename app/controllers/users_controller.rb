@@ -23,7 +23,10 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params)
+      # if params[:profile_image] != ""
+        image = Cloudinary::Uploader.upload(params[:profile_image])
+        @user = User.create(username: params[:username], email: params[:email], bio: params[:bio], password: params[:password], profile_image: image["url"])
+      # end 
         if @user.valid?
             token = encode_token({ user_id: @user.id })
             render json: { user: @user, jwt: token }
@@ -37,8 +40,9 @@ class UsersController < ApplicationController
     def update
       # byebug
         if current_user.id === params[:id].to_i
-          user = User.find(params[:id])
-          user.update(user_params)
+            user = User.find(params[:id])
+            image = Cloudinary::Uploader.upload(params[:profile_image])
+            user.update(username: params[:username], email: params[:email], password: params[:password], profile_image: image["url"])
         end
         if user.valid?
           render json: { user: UserSerializer.new(user) }, status: :accepted
@@ -46,11 +50,6 @@ class UsersController < ApplicationController
           render json: { error: "Failed to update User"}, status: :not_acceptable
         end
     end
-
-    # profile_image: { 
-    #   url: hjfslhjsghhjlggs.com
-    #  }
-
 
 
 
