@@ -23,10 +23,8 @@ class UsersController < ApplicationController
     end
 
     def create
-      # if params[:profile_image] != ""
         image = Cloudinary::Uploader.upload(params[:profile_image])
         @user = User.create(username: params[:username], email: params[:email], bio: params[:bio], password: params[:password], profile_image: image["url"])
-      # end 
         if @user.valid?
             token = encode_token({ user_id: @user.id })
             render json: { user: @user, jwt: token }

@@ -14,6 +14,7 @@ class PostsController < ApplicationController
         image = Cloudinary::Uploader.upload(params[:post_image])
         post = Post.create(content: params[:content], post_image: image["url"])
         # byebug
+        # post.save
         
         if post.valid?
             render json: {post: PostSerializer.new(post)}, status: :accepted
