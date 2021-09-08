@@ -100,9 +100,9 @@ class UsersController < ApplicationController
 
     private
 
-    def user_params
-        params.require(:user).permit(:username, :bio, :email, :password, :profile_image)
-    end 
+    # def user_params
+    #     params.require(:user).permit(:username, :bio, :email, :password, :profile_image)
+    # end 
 
     def follow_params
         params.permit(:follower_id, :followed_user_id)

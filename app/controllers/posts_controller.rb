@@ -12,8 +12,8 @@ class PostsController < ApplicationController
 
     def create
         image = Cloudinary::Uploader.upload(params[:post_image])
-        post = Post.create(content: params[:content], post_image: image["url"])
         # byebug
+        post = Post.create(user_id: params[:user_id], content: params[:content], post_image: image["url"])
         # post.save
         
         if post.valid?

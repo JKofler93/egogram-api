@@ -1,5 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :avatar, :username, :post_image, :content, :time, :likes, :like_number, :comment_number, :created_at, :comments
+  attributes :id, :user_id, :avatar ,:username, :post_image, :content, :time, :likes, :like_number, :comment_number, :created_at, :comments
 
 
   def username
@@ -7,7 +7,7 @@ class PostSerializer < ActiveModel::Serializer
   end 
 
   def avatar
-    url_for(object.user.profile_image)
+    object.user.profile_image
   end 
 
   def comments 
